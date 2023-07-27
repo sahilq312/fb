@@ -7,8 +7,6 @@ import jwt from 'jsonwebtoken'
 
 const authController = express.Router();
 
-
-
 authController.post("/register", async (req, res) => {
   const exist = await User.findOne({ email: req.body.email });
   if (exist) res.status(400).json({ message: "user alreay exist" });
@@ -24,10 +22,23 @@ authController.post("/register", async (req, res) => {
   try {
     const saveduser = await user.save();
     const token = jwt.sign({_id:user._id}, process.env.SECRET )
-    res.header('auth-token', token).send(token)
+    res.header('auth-token', token).json(token)
   } catch (error) {}
 });
-authController.get("/login", async(req,res)=>{
-    res.send("working")
+authController.post("/login", async(req,res)=>{
+  try {
+    const user = await User.findOne({email: req.body.email})
+    if(!user)return res.status(400).json('email is wrong')
+
+    const validpass = await bcrypt.compare(req.body.password, user.password)
+    if(!validpass)return res.status(400).json('invalid password')
+
+    //res.status(200).json({_id:user._id})
+    const token = jwt.sign({_id:user._id}, process.env.SECRET)
+    res.header('auth-token', token).json(token)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('internal server error')
+  }
 })
 export default authController;

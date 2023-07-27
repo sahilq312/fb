@@ -4,7 +4,7 @@ import User from "../models/User.js";
 import verifytoken from "../middleware/verifyToken.js";
 const userController = express.Router();
 
-userController.get("/private", verifytoken, async (req, res) => {
+userController.get("/profile", verifytoken, async (req, res) => {
   const id = req.user
   const _id = id._id
   //console.log(id);
