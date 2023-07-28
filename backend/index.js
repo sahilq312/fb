@@ -6,7 +6,6 @@ import authController from './controllers/auth.js';
 import userController from './controllers/user.js';
 
 
-
 main().catch(err => console.log(err));
 
 async function main() {

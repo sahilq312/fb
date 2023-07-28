@@ -1,27 +1,30 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 const Navbar = () => {
     const auth = localStorage.getItem('token')
+    const Navigate = useNavigate()
+    
     function logout() {
-        localStorage.removeItem('token')
+        localStorage.clear();
+        Navigate('/login')
     }
     
   return (
     <div>
         {
             auth ?
-            <>
-            <NavLink to='/'>Home</NavLink>
+        <ul>    
+        <NavLink to='/'>Home</NavLink>
         <NavLink to='/friend'>Friends</NavLink>
         <NavLink to='/profile'>Profile</NavLink>
         <button onClick={logout}>Logout</button>
-        </>
+        </ul>
         :
-        <>
+        <ul>
         <NavLink to='/login'>Login</NavLink>
         <NavLink to='/register'>Register</NavLink>
-        </>
+        </ul>
         }
     </div>
   )

@@ -35,7 +35,7 @@ authController.post("/login", async(req,res)=>{
 
     //res.status(200).json({_id:user._id})
     const token = jwt.sign({_id:user._id}, process.env.SECRET)
-    res.header('auth-token', token).json(token)
+    res.status(200).header('auth-token', token).json({token})
   } catch (error) {
     console.log(error)
     res.status(500).send('internal server error')

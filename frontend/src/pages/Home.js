@@ -1,8 +1,10 @@
 import React from 'react'
 
 const Home = () => {
+
+  const token = localStorage.getItem('token')
   return (
-    <div>Home</div>
+    <div>{token}</div>
   )
 }
 

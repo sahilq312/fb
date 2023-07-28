@@ -1,24 +1,46 @@
-import React, { useState } from "react";
-//import { Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  function handleSubmit(e) {
+  const Navigate = useNavigate();
+  useEffect(() => {
+    const auth = localStorage.getItem("token");
+    if (auth) {
+      Navigate("/");
+    }
+  });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = fetch("http://localhost:5000/auth/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(JSON.stringify(response))
-  }
+    const user = {
+      email,
+      password,
+    };
+    console.log(user);
+    try {
+      const response = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      if (response.ok) {
+        const { token } = await response.json();
+        //console.log(token)
+        localStorage.setItem("token", token);
+        Navigate("/");
+      }
+      if (!response.ok) {
+        console.error(Error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <h1>Login</h1>
