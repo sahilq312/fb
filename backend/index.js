@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from 'cors';
 import authController from './controllers/auth.js';
 import userController from './controllers/user.js';
+import postController from './controllers/post.js';
 
 
 main().catch(err => console.log(err));
@@ -21,6 +22,7 @@ app.get("/", (req,res)=> {
 })
 app.use('/auth', authController)
 app.use('/user', userController)
+app.use("/post", postController)
 
 app.listen(process.env.PORT, ()=> {
     console.log("server is running");
