@@ -6,8 +6,8 @@ const Home = () => {
   useEffect(()=> {
     fetch('http://localhost:5000/post/posts',{
       method: 'GET',
-      'Content-Type': 'application/json',
       headers:{
+        'Content-Type': 'application/json',
         'auth-token': `${token}`
       }
     })

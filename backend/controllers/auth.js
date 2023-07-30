@@ -22,7 +22,7 @@ authController.post("/register", async (req, res) => {
   try {
     const saveduser = await user.save();
     const token = jwt.sign({_id:user._id}, process.env.SECRET )
-    res.header('auth-token', token).json(token)
+    res.status(200).header.json(token)
   } catch (error) {}
 });
 authController.post("/login", async(req,res)=>{

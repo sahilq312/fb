@@ -7,8 +7,6 @@ const userController = express.Router();
 userController.get("/profile", verifytoken, async (req, res) => {
   const id = req.user
   const _id = id._id
-  //console.log(id);
-  //console.log(_id);
   try {
     const user = await User.findById(_id);
     if (user) {
