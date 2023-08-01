@@ -10,13 +10,14 @@ import Private from "./component/Private";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App m-auto bg-black min-h-screen text-white lg:w-5/12">
       <Navbar />
       <Routes>
         <Route element={<Private/>}>
         <Route path="/" element={<Home/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/friend" element={<Friend/>}/>
+        <Route path="/profile/:id"/>
         </Route>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>

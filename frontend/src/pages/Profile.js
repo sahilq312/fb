@@ -18,7 +18,8 @@ const Profile = () => {
   })})
   return (
     <div key={userData.id}>
-      <h1>{userData.email}</h1>
+      <h1>{userData.name}</h1>
+      <p>{userData.email}</p>
     </div>
   )
 }

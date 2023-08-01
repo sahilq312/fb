@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [name, setName] = useState("")
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
@@ -15,6 +16,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
+      name,
       email,
       password,
     };
@@ -43,6 +45,13 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
+      <label>Username</label>
+        <input
+        type="email"
+        placeholder="email@email.com"
+        value={email}
+        onChange={(e) => setName(e.target.value)}
+         />
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input

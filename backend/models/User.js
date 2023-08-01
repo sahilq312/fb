@@ -3,6 +3,7 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
+    required: true
   },
   email: {
     type: String,
@@ -15,7 +16,7 @@ const userSchema = new mongoose.Schema({
   },
   posts:[ {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "POST",
+    ref: "Post",
   }],
   following: [
     {
