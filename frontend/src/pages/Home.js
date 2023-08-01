@@ -19,7 +19,7 @@ const Home = () => {
   return <div>
     <ul>
       {post.map(post=>(
-        <li key={post.id}>
+        <li key={post._id}>
           <h3>{post.owner}</h3>
           <p>{post.caption}</p>
         </li>
