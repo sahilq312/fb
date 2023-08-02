@@ -5,8 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
-import Friend from "./pages/Friend";
 import Private from "./component/Private";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route element={<Private/>}>
         <Route path="/" element={<Home/>}/>
         <Route path="/profile" element={<Profile/>}/>
-        <Route path="/friend" element={<Friend/>}/>
+        <Route path="/create" element={<CreatePost/>}/>
         <Route path="/profile/:id"/>
         </Route>
         <Route path="/login" element={<Login/>}/>
