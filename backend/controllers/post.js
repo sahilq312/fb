@@ -4,16 +4,15 @@ import express from 'express';
 import verifytoken from '../middleware/verifyToken.js'
 const postController = express.Router();
 
-postController.get("/posts", verifytoken, async(req,res)=> {
-    const userId = req.user
+postController.get("/posts", verifytoken, async (req, res) => {
     try {
-        //console.log(userId);
-        const posts = await Post.find();
-        res.status(200).json(posts)
+      const posts = await Post.find().populate("owner");
+      res.status(200).json(posts);
     } catch (error) {
-        
+      res.status(500).json({ error: "Failed to fetch posts" });
     }
-})
+  });
+  
 postController.post("/create", verifytoken , async(req,res)=> {
     //caption, owner, image
     const id = req.user
