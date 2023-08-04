@@ -21,9 +21,9 @@ authController.post("/register", async (req, res) => {
   });
 
   try {
-    const saveduser = await user.save();
+    const saveduser = await User.create(user);
     const token = jwt.sign({_id:user._id}, process.env.SECRET )
-    res.status(200).json(token)
+    res.status(200).json({token, user})
   } catch (error) {
     console.log(error);
   }

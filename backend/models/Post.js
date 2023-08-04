@@ -5,18 +5,17 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  owner: {
-     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
-    required: true
-  },
+  owner: [{
+     type: "ObjectId",
+    ref: "User"
+  }],
   createdAt: {
     type: Date,
     default: Date.now,
   },
   likes: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: "ObjectId",
       ref: "User",
     },
   ],
@@ -33,5 +32,5 @@ const postSchema = new mongoose.Schema({
     },
   ],
 });
-const Post = new mongoose.model("post", postSchema);
+const Post = new mongoose.model("Post", postSchema);
 export default Post;

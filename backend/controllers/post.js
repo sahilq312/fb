@@ -6,9 +6,10 @@ const postController = express.Router();
 
 postController.get("/posts", verifytoken, async (req, res) => {
     try {
-      const posts = await Post.find().populate("owner");
+      const posts = await Post.find().populate('owner');
       res.status(200).json(posts);
     } catch (error) {
+      console.error("Error fetching posts:", error);
       res.status(500).json({ error: "Failed to fetch posts" });
     }
   });
@@ -22,11 +23,11 @@ postController.post("/create", verifytoken , async(req,res)=> {
             caption: req.body.caption,
             owner: _id,
           });
-          const createPost = await post.save()
+          const createPost = await Post.create(post)
           const user = await User.findById(_id)
-          user.posts.unshift(post._id)
+          user.posts.unshift(createPost._id)
           await user.save()
-          res.status(200).json(post)
+          res.status(200).json(createPost)
     } catch (error) {
         res.status(500).json(error)
     }

@@ -14,24 +14,24 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  posts:[ {
-    type: mongoose.Schema.Types.ObjectId,
+  posts:[{
+    type: "ObjectId",
     ref: "Post",
   }],
   following: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: "ObjectId",
       ref: "User",
     },
   ],
   follower: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: "ObjectId",
       ref: "User",
     },
   ],
   country: String,
   about: String,
 });
-const User = new mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 export default User;
