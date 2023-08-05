@@ -32,13 +32,13 @@ postController.post("/create", verifytoken , async(req,res)=> {
         res.status(500).json(error)
     }
 })
-postController.delete("/delete", verifytoken, async(req,res)=> {
+postController.delete("/delete/:id", verifytoken, async(req,res)=> {
     
 })
-postController.post("/like", verifytoken, async(req,res)=> {
+postController.post("/like/:id", verifytoken, async(req,res)=> {
     
 })
-postController.post("/comment", verifytoken, async(req,res)=> {
+postController.post("/comment/:id", verifytoken, async(req,res)=> {
     
 })
 export default postController;
