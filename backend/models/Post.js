@@ -9,6 +9,10 @@ const postSchema = new mongoose.Schema({
      type: "ObjectId",
     ref: "User"
   }],
+  image: {
+    public_id : String,
+    url: String,
+   },
   createdAt: {
     type: Date,
     default: Date.now,
