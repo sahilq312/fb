@@ -24,7 +24,7 @@ const Home = () => {
             <h1>{post.owner[0].name}</h1>
             <span>{post.owner[0].email}</span>
             <p>{post.caption}</p>
-            <img src={post.img} alt="" />
+            <img src={post.image} alt="" />
             <span>{post.like}</span>
           </li>
         ))}

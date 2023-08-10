@@ -43,20 +43,19 @@ const Register = () => {
     }
   };
   return (
-    <div>
+    <div className="  text-black">
       <h1>Register</h1>
       <label>Username</label>
         <input
-        type="email"
-        placeholder="email@email.com"
-        value={email}
+        type="text"
+        value={name}
         onChange={(e) => setName(e.target.value)}
+        className=""
          />
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input
           type="email"
-          placeholder="email@email.com"
           value={email}
           onChange={(e) => setemail(e.target.value)}
         />
