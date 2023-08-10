@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
   const [caption, setcaption] = useState("");
+  //const [image, setImage] = useState("");
   const token = localStorage.getItem("token")
   const Navigate = useNavigate();
 

@@ -26,7 +26,7 @@ const Navbar = () => {
         <button onClick={logout}><HiOutlineLogout/></button>
         </ul>
         :
-        <ul classNameNam='flex justify-center space-x-10'>
+        <ul className='flex justify-center space-x-10'>
         <NavLink to='/login'>login</NavLink>
         <NavLink to='/register'>register</NavLink>
         </ul>
