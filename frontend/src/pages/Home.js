@@ -20,12 +20,12 @@ const Home = () => {
     <div className="">
       <ul>
         {post.map((post) => (
-          <li key={post._id}>
-            <h1>{post.owner[0].name}</h1>
-            <span>{post.owner[0].email}</span>
-            <p>{post.caption}</p>
-            <img src={post.image} alt="" />
-            <span>{post.like}</span>
+          <li key={post._id} className="border border-slate-500 text-left p-4">
+            <h1 className=" text-xl">{post.owner[0].name}</h1>
+            <span className=" text-sm">{post.owner[0].email}</span>
+            <p className="">{post.caption}</p>
+            <img src={post.image} alt="" className=" w-full" />
+            <span className="">{post.like}</span>
           </li>
         ))}
       </ul>
