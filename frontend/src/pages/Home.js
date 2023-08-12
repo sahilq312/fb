@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="">
       <ul>
-        {post.map((post) => (
+        {post.reverse().map((post) => (
           <li key={post._id} className="border border-slate-500 text-left p-4">
             <h1 className=" text-xl">{post.owner[0].name}</h1>
             <span className=" text-sm">{post.owner[0].email}</span>

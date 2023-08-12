@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const CreatePost = () => {
   const [caption, setCaption] = useState("");
   const [productImg, setProductImg] = useState("");
-  // Changed to null for better handling
   const token = localStorage.getItem("token");
   const Navigate = useNavigate();
 
@@ -12,7 +11,6 @@ const CreatePost = () => {
     const file = e.target.files[0];
     TransformFileData(file);
   };
-    // Debugging: Log the selected image information
     console.log("Selected Image:", productImg);
 
   const TransformFileData = (file) => {
@@ -46,7 +44,6 @@ const CreatePost = () => {
       const response = await fetch("http://localhost:5000/post/create", {
         method: "POST",
         headers: {
-          // Remove the "Content-Type" header
           "auth-token": `${token}`,
         },
         body: formData,
