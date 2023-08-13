@@ -20,4 +20,14 @@ userController.get("/profile", verifytoken, async (req, res) => {
     });
   }
 });
+userController.put("/update", verifytoken, async(req,res)=> {
+  const id = req.user
+  const _id = id._id
+  try {
+    const user = await User.findById(_id)
+    const {name, email, avatar} = req.body;
+  } catch (error) {
+    res.status(500).json({message: "something went wrooong"})
+  }
+} )
 export default userController;

@@ -11,7 +11,7 @@ const CreatePost = () => {
     const file = e.target.files[0];
     TransformFileData(file);
   };
-    console.log("Selected Image:", productImg);
+  console.log("Selected Image:", productImg);
 
   const TransformFileData = (file) => {
     const reader = new FileReader();
@@ -31,7 +31,7 @@ const CreatePost = () => {
 
     const post = {
       caption,
-      image: productImg
+      image: productImg,
     };
     console.log(post);
     console.log("Image to upload:", productImg);
@@ -48,16 +48,17 @@ const CreatePost = () => {
         },
         body: formData,
       });
-
       if (response.ok) {
         Navigate("/");
+      }
+      if (!response.ok) {
+        console.error(Error);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-    
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -79,19 +80,17 @@ const CreatePost = () => {
         <button type="submit">Submit</button>
       </form>
       {productImg ? (
-          <>
-            <img src={productImg} alt="error!" />
-          </>
-        ) : (
-          <p>Product image upload preview will appear here!</p>
-        )}
+        <>
+          <img src={productImg} alt="error!" />
+        </>
+      ) : (
+        <p>Product image upload preview will appear here!</p>
+      )}
     </>
   );
-}
+};
 
 export default CreatePost;
-
-
 
 /* import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
